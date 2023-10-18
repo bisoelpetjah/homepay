@@ -32,7 +32,7 @@ const Splash: FC<NavigationProps<'Splash'>> = ({ navigation }) => {
         return
       }
 
-      switch(user.role) {
+      switch (user.role) {
         case 'homeowner':
           navigation.replace('DashboardHomeowner')
           break

@@ -1,5 +1,5 @@
 import React, { FC, useState, useCallback } from 'react'
-import { StyleSheet, StyleProp, TextStyle, View, Text, TextInput, TextInputProps, TouchableHighlight, Image } from 'react-native'
+import { StyleSheet, StyleProp, TextStyle, View, Text, TextInput, TextInputProps, TouchableOpacity, Image } from 'react-native'
 
 import { sysLightOnSurfaceVariant, sysLightError } from '../../styles/colors'
 
@@ -70,13 +70,14 @@ const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle 
         </Text>
       )}
       {password && showPasswordVisibilityToggle && (
-        <TouchableHighlight
+        <TouchableOpacity
+          activeOpacity={.5}
           onPress={handleTogglePasswordVisibility}
           style={styles.visibilityToggleButton}>
           <Image
             source={require('./remove-red-eye.png')}
             style={styles.visibilityToggleButtonIcon} />
-        </TouchableHighlight>
+        </TouchableOpacity>
       )}
     </View>
   )

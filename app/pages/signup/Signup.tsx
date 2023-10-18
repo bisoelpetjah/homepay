@@ -66,7 +66,7 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
       role: route.params.role,
     }
 
-    switch(user.role) {
+    switch (user.role) {
       case 'homeowner':
         await setHomeownerUser(user)
         break
@@ -86,7 +86,7 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
       setSubmitting(false)
 
       requestAnimationFrame(() => {
-        switch(user.role) {
+        switch (user.role) {
           case 'homeowner':
             navigation.reset({ index: 0, routes: [{ name: 'DashboardHomeowner' }] })
             break
@@ -103,16 +103,16 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
     const error = errors[dataKey]
 
     if (error) {
-      switch(dataKey) {
+      switch (dataKey) {
         case 'confirmPassword':
-          switch(error.type) {
+          switch (error.type) {
             case 'required':
               return { ...prev, [dataKey]: 'Please re-enter password' }
             case 'confirm':
               return { ...prev, [dataKey]: 'Password does not match' }
           }
         case 'email':
-          switch(error.type) {
+          switch (error.type) {
             case 'required':
               return { ...prev, [dataKey]: 'Please enter email' }
             case 'email': {

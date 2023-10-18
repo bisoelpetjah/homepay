@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect, useCallback } from 'react'
-import { StyleSheet, View, TouchableHighlight, StyleProp, TextStyle } from 'react-native'
+import { StyleSheet, View, TouchableOpacity, StyleProp, TextStyle } from 'react-native'
 
 import { sysLightPrimary, sysLightOnPrimary, sysLightOutline, sysLightSurfaceVariant } from '../../styles/colors'
 
@@ -57,11 +57,12 @@ const Switch: FC<SwitchProps> = ({ selected, onChangeSelected, style }) => {
   }, [selected, onChangeSelected])
 
   return (
-    <TouchableHighlight
+    <TouchableOpacity
+      activeOpacity={.5}
       onPress={handleSelectChange}
       style={StyleSheet.compose(StyleSheet.compose(styles.button, isSelected ? styles.buttonSelected : {}), style)}>
       <View style={StyleSheet.compose(styles.indicator, isSelected ? styles.indicatorSelected : {})} />
-    </TouchableHighlight>
+    </TouchableOpacity>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from 'react'
-import { StyleSheet, ScrollView, View, Text, Image, TouchableHighlight, Dimensions } from 'react-native'
+import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, Dimensions } from 'react-native'
 
 import Loading from '../../components/loading/Loading'
 import Button from '../../components/button/Button'
@@ -95,7 +95,6 @@ const styles = StyleSheet.create({
   balanceCurrency: {
     color: sysLightOnPrimaryContainer,
     fontSize: 12,
-    fontWeight: '400',
     lineHeight: 16,
     textAlign: 'center',
   },
@@ -126,7 +125,6 @@ const styles = StyleSheet.create({
   transactionActionButtonText: {
     color: sysLightOnPrimaryContainer,
     fontSize: 12,
-    fontWeight: '400',
     lineHeight: 16,
   },
   transactionActionDivider: {
@@ -157,7 +155,6 @@ const styles = StyleSheet.create({
   transactionItemText: {
     color: sysLightOnPrimaryContainer,
     fontSize: 12,
-    fontWeight: '400',
     lineHeight: 16,
   },
   transactionItemAmount: {
@@ -251,7 +248,6 @@ const styles = StyleSheet.create({
   projectItemBalanceLabel: {
     color: sysLightOnPrimaryContainer,
     fontSize: 18,
-    fontWeight: '400',
     lineHeight: 24,
     marginEnd: 8,
   },
@@ -344,13 +340,14 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
               </Text>
             </View>
           </View>
-          <TouchableHighlight
+          <TouchableOpacity
+            activeOpacity={.5}
             onPress={() => {}}
             style={styles.notificationsButton}>
             <Image
               source={require('./notifications.png')}
               style={styles.notificationsButtonIcon} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
         <View style={styles.balanceContainer}>
           <View style={styles.balanceCardContainer}>
@@ -368,7 +365,9 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
         <View style={styles.transactionContainer}>
           <View style={styles.transactionActionsContainer}>
             <View style={styles.transactionActionContainer}>
-              <TouchableHighlight onPress={() => {}}>
+              <TouchableOpacity
+                activeOpacity={.5}
+                onPress={() => {}}>
                 <View style={styles.transactionActionButtonContainer}>
                   <Image
                     source={require('./briefcase-dollar.png')}
@@ -377,11 +376,13 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
                     Add Money
                   </Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
             <View style={styles.transactionActionDivider} />
             <View style={styles.transactionActionContainer}>
-              <TouchableHighlight onPress={() => {}}>
+              <TouchableOpacity
+                activeOpacity={.5}
+                onPress={() => {}}>
                 <View style={styles.transactionActionButtonContainer}>
                   <Image
                     source={require('./send-money.png')}
@@ -390,7 +391,7 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
                     Transfer Money
                   </Text>
                 </View>
-              </TouchableHighlight>
+              </TouchableOpacity>
             </View>
           </View>
           <Text style={styles.transactionListTitle}>
@@ -428,32 +429,36 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
               </View>
           ))}
           <View style={styles.transactionListActionContainer}>
-            <TouchableHighlight onPress={() => {}}>
+            <TouchableOpacity
+              activeOpacity={.5}
+              onPress={() => {}}>
               <Text style={styles.transactionListActionText}>
                 View All
               </Text>
-            </TouchableHighlight>
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.projectListTitleContainer}>
           <Text style={styles.projectListTitle}>
             Projects
           </Text>
-          <TouchableHighlight
+          <TouchableOpacity
+            activeOpacity={.5}
             onPress={() => {}}
             style={styles.projectListTitleAction}>
             <Image
               source={require('./arrow-forward.png')}
               style={styles.projectListTitleActionIcon} />
-          </TouchableHighlight>
+          </TouchableOpacity>
         </View>
         {projects.map((project, i) => {
           const { name, tranches, currentTrancheName, escrowWalletAmount } = project
           const currentTranche = tranches.find(({ name }) => (name === currentTrancheName))
 
           return (
-            <TouchableHighlight
+            <TouchableOpacity
               key={i}
+              activeOpacity={.5}
               onPress={() => { navigation.push('HomeownerProjectDetail', { project }) }}>
               <View style={styles.projectItemContainer}>
                 <View style={styles.projectItemTitleContainer}>
@@ -483,18 +488,20 @@ const DashboardHomeowner: FC<NavigationProps<'DashboardHomeowner'>> = ({ navigat
                     <Text style={styles.projectItemBalanceLabel}>
                       Escrow Wallet
                     </Text>
-                    <TouchableHighlight onPress={() => {}}>
+                    <TouchableOpacity
+                      activeOpacity={.5}
+                      onPress={() => {}}>
                       <Image
                         source={require('./info-outline.png')}
                         style={styles.projectItemBalanceLabelInfoIcon} />
-                    </TouchableHighlight>
+                    </TouchableOpacity>
                   </View>
                   <Text style={styles.projectItemBalanceAmount}>
                     {escrowWalletAmount}
                   </Text>
                 </View>
               </View>
-            </TouchableHighlight>
+            </TouchableOpacity>
           )
         })}
       </View>

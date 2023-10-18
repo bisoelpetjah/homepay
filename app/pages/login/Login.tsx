@@ -69,7 +69,7 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
     setSubmitting(true)
 
     let registeredUser: User | null = null
-    switch(route.params.role) {
+    switch (route.params.role) {
       case 'homeowner':
         registeredUser = await getHomeownerUser()
         break
@@ -94,7 +94,7 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
 
         await setCurrentUser(registeredUser)
 
-        switch(route.params.role) {
+        switch (route.params.role) {
           case 'homeowner':
             navigation.reset({ index: 0, routes: [{ name: 'DashboardHomeowner' }] })
             break

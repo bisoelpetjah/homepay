@@ -21,7 +21,7 @@ const App: FC = () => (
   <NavigationContainer>
     <Stack.Navigator
       initialRouteName="Splash"
-      screenOptions={{ header: () => null, contentStyle: { backgroundColor: '#f6f6f6' } }}>
+      screenOptions={{ headerShown: false, contentStyle: { backgroundColor: '#f6f6f6' } }}>
       <Stack.Screen
         name="Splash"
         component={Splash}

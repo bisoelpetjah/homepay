@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, StyleProp, TextStyle, TouchableHighlight, TouchableHighlightProps, Text, GestureResponderEvent } from 'react-native'
+import { StyleSheet, StyleProp, TextStyle, TouchableOpacity, TouchableOpacityProps, Text, GestureResponderEvent } from 'react-native'
 
 import { sysLightPrimary, sysLightOnPrimary, sysLightSecondaryContainer, sysLightOnSecondaryContainer, sysLightOutline } from '../../styles/colors'
 
@@ -50,17 +50,18 @@ const styles = StyleSheet.create({
   },
 })
 
-type ButtonProps = ButtonBaseProps & Omit<TouchableHighlightProps, keyof ButtonBaseProps>
+type ButtonProps = ButtonBaseProps & Omit<Omit<TouchableOpacityProps, keyof ButtonBaseProps>, 'opacity'>
 
 const Button: FC<ButtonProps> = ({ children, role = 'primary', outlined = false, disabled = false, style, ...props }) => (
-  <TouchableHighlight
+  <TouchableOpacity
+    activeOpacity={.5}
     disabled={disabled}
     style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.button, styles[role]), outlined ? styles.outlined : {}), disabled ? styles.disabled : {}), style)}
     {...props}>
     <Text style={StyleSheet.compose(StyleSheet.compose(styles.text, styles[`${role}Text`]), outlined ? styles[`${role}TextOutlined`] : {})}>
       {children}
     </Text>
-  </TouchableHighlight>
+  </TouchableOpacity>
 )
 
 export default Button
