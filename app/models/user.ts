@@ -1,3 +1,5 @@
+import SubAccount from './subAccount'
+
 export type UserRole = 'homeowner' | 'interiorDesignFirm'
 
 interface User {
@@ -5,6 +7,7 @@ interface User {
   name: string
   password: string
   role: UserRole
+  subAccounts?: SubAccount[]
 }
 
 export default User

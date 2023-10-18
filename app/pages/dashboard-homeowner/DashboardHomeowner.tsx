@@ -83,18 +83,21 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     lineHeight: 24,
     marginBottom: 8,
+    textAlign: 'center',
   },
   balance: {
     color: sysLightOnPrimaryContainer,
     fontSize: 36,
     fontWeight: '700',
     lineHeight: 44,
+    textAlign: 'center',
   },
   balanceCurrency: {
     color: sysLightOnPrimaryContainer,
     fontSize: 12,
     fontWeight: '400',
     lineHeight: 16,
+    textAlign: 'center',
   },
   transactionContainer: {
     backgroundColor: sysLightSecondary99,

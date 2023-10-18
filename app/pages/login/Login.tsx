@@ -82,7 +82,6 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
       setSubmitting(false)
 
       requestAnimationFrame(async () => {
-        console.log(registeredUser, data.email, data.password)
         if (!registeredUser) {
           setSubmitError(true)
           return

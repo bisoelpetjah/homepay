@@ -71,6 +71,11 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
         await setHomeownerUser(user)
         break
       case 'interiorDesignFirm':
+        user.subAccounts = [
+          { name: 'Sub ID 1', isActive: true },
+          { name: 'Sub ID 2', isActive: true },
+          { name: 'Sub ID 3', isActive: true },
+        ]
         await setInteriorDesignFirmUser(user)
         break
     }

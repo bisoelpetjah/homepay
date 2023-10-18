@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     width: 150,
   },
   loading: {
-    transform: 'scale(1.5)',
+    transform: [{ scale: 1.5 }],
   },
 })
 
