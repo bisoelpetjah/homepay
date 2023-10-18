@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, TouchableHighlight, Text, GestureResponderEvent } from 'react-native'
+import { StyleSheet, StyleProp, TextStyle, TouchableHighlight, Text, GestureResponderEvent } from 'react-native'
 
 import { sysLightPrimary, sysLightOnPrimary, sysLightSecondaryContainer, sysLightOnSecondaryContainer, sysLightOutline } from '../../styles/colors'
 
@@ -8,7 +8,7 @@ interface ButtonProps {
   role?: 'primary' | 'secondary'
   outlined?: boolean
   onPress?: (event: GestureResponderEvent) => void
-  style?: object
+  style?: StyleProp<TextStyle>
 }
 
 const styles = StyleSheet.create({

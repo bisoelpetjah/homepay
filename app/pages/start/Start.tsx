@@ -6,7 +6,7 @@ import Button from '../../components/button/Button'
 
 import { NavigationProps } from '../../navigation'
 
-import { surfacesLightSurface3Alpha, sysLightOnPrimary, sysLightPrimary, sysLightSurfaceContainerHighest } from '../../styles/colors'
+import { surfacesLightSurface3Alpha, sysLightPrimary, sysLightSurfaceContainerHighest } from '../../styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -123,8 +123,16 @@ const renderCarouselItem = (item: { item: CarouselItem, index: number }) => (
   </View>
 )
 
-const Start: FC<NavigationProps<'Start'>> = ({ route }) => {
+const Start: FC<NavigationProps<'Start'>> = ({ route, navigation }) => {
   const [activeCarouselItemIndex, setActiveCarouselItemIndex] = useState(0)
+
+  const handleLogin = useCallback(() => {
+    navigation.push('Login')
+  }, [])
+
+  const handleSignup = useCallback(() => {
+    navigation.push('Signup', { role: route.params.role })
+  }, [])
 
   return (
     <View style={styles.container}>
@@ -147,10 +155,14 @@ const Start: FC<NavigationProps<'Start'>> = ({ route }) => {
           onSnapToItem={setActiveCarouselItemIndex} />
       </View>
       <View style={styles.actionContainer}>
-        <Button style={styles.actionFirstButton}>
+        <Button
+          onPress={handleLogin}
+          style={styles.actionFirstButton}>
           Log In
         </Button>
-        <Button outlined>
+        <Button
+          outlined
+          onPress={handleSignup}>
           Sign Up
         </Button>
       </View>

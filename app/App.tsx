@@ -5,6 +5,8 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import Splash from './pages/splash/Splash'
 import Welcome from './pages/welcome/Welcome'
 import Start from './pages/start/Start'
+import Login from './pages/login/Login'
+import Signup from './pages/signup/Signup'
 
 import { RootStackParamList } from './navigation'
 
@@ -28,6 +30,12 @@ const App: FC = () => (
         name="Start"
         component={Start}
         options={{ contentStyle: { backgroundColor: surfacesLightSurface3 } }} />
+      <Stack.Screen
+        name="Login"
+        component={Login} />
+      <Stack.Screen
+        name="Signup"
+        component={Signup} />
     </Stack.Navigator>
   </NavigationContainer>
 )
