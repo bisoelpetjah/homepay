@@ -83,13 +83,13 @@ interface CarouselIndicatorProps {
 }
 
 const CarouselActiveIndicator: FC<CarouselIndicatorProps> = ({ index }) => (
-  <View style={StyleSheet.compose(StyleSheet.compose(styles.carouselIndicator, index === (carouselData.length - 1) ? styles.carouselIndicatorLast : {}), styles.carouselActiveIndicator)}>
+  <View style={StyleSheet.compose(StyleSheet.compose(styles.carouselIndicator, index === (carouselData.length - 1) && styles.carouselIndicatorLast), styles.carouselActiveIndicator)}>
     <View style={styles.carouselActiveIndicatorChild} />
   </View>
 )
 
 const CarouselInactiveIndicator: FC<CarouselIndicatorProps> = ({ index = 0, activeIndex }) => (
-  <View style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.carouselIndicator, index === (carouselData.length - 1) ? styles.carouselIndicatorLast : {}), styles.carouselInactiveIndicator), index < activeIndex ? styles.carouselInactiveIndicatorBefore : {})} />
+  <View style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.carouselIndicator, index === (carouselData.length - 1) && styles.carouselIndicatorLast), styles.carouselInactiveIndicator), (index < activeIndex) && styles.carouselInactiveIndicatorBefore)} />
 )
 
 interface CarouselItem {

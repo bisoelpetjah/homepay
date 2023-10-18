@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
   },
 })
 
-const NavigationBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }) => {
+const NavigationBar: FC<BottomTabBarProps> = ({ state, navigation }) => {
   const routes = state.routes as NavigationState<DashboardInteriorDesignFirmParamList>['routes']
   return (
     <View style={styles.container}>
@@ -86,7 +86,7 @@ const NavigationBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }
         let displayIcon: ImageSourcePropType
         switch (route.name) {
           case 'DashboardInteriorDesignFirmHome':
-            displayName = 'Home'
+            displayName = 'Dashboard'
             displayIcon = require('./dashboard-layout.png')
             break
           case 'DashboardInteriorDesignFirmRejectRequests':
@@ -112,12 +112,12 @@ const NavigationBar: FC<BottomTabBarProps> = ({ state, descriptors, navigation }
             onLongPress={onLongPress}
             style={styles.button}>
             <View style={styles.buttonContainer}>
-              <View style={StyleSheet.compose(styles.buttonIconContainer, isActive ? styles.buttonIconContainerActive : {})}>
+              <View style={StyleSheet.compose(styles.buttonIconContainer, isActive && styles.buttonIconContainerActive)}>
                 <Image
                   source={displayIcon}
                   style={styles.buttonIcon} />
               </View>
-              <Text style={StyleSheet.compose(styles.buttonText, isActive ? styles.buttonTextActive : {})}>
+              <Text style={StyleSheet.compose(styles.buttonText, isActive && styles.buttonTextActive)}>
                 {displayName}
               </Text>
             </View>

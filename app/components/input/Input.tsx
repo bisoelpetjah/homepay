@@ -61,7 +61,7 @@ const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle 
     <View style={StyleSheet.compose(styles.container, style)}>
       <TextInput
         secureTextEntry={password && !isPasswordVisible}
-        style={StyleSheet.compose(StyleSheet.compose(styles.input, (hasError || errorMessage) ? styles.inputError : {}), inputStyle)}
+        style={StyleSheet.compose(StyleSheet.compose(styles.input, (hasError || !!errorMessage) && styles.inputError), inputStyle)}
         {...props}>
       </TextInput>
       {errorMessage && (

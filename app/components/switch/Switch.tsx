@@ -60,8 +60,8 @@ const Switch: FC<SwitchProps> = ({ selected, onChangeSelected, style }) => {
     <TouchableOpacity
       activeOpacity={.5}
       onPress={handleSelectChange}
-      style={StyleSheet.compose(StyleSheet.compose(styles.button, isSelected ? styles.buttonSelected : {}), style)}>
-      <View style={StyleSheet.compose(styles.indicator, isSelected ? styles.indicatorSelected : {})} />
+      style={StyleSheet.compose(StyleSheet.compose(styles.button, isSelected && styles.buttonSelected), style)}>
+      <View style={StyleSheet.compose(styles.indicator, isSelected && styles.indicatorSelected)} />
     </TouchableOpacity>
   )
 }

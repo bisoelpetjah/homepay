@@ -56,9 +56,9 @@ const Button: FC<ButtonProps> = ({ children, role = 'primary', outlined = false,
   <TouchableOpacity
     activeOpacity={.5}
     disabled={disabled}
-    style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.button, styles[role]), outlined ? styles.outlined : {}), disabled ? styles.disabled : {}), style)}
+    style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.button, styles[role]), outlined && styles.outlined), disabled && styles.disabled), style)}
     {...props}>
-    <Text style={StyleSheet.compose(StyleSheet.compose(styles.text, styles[`${role}Text`]), outlined ? styles[`${role}TextOutlined`] : {})}>
+    <Text style={StyleSheet.compose(StyleSheet.compose(styles.text, styles[`${role}Text`]), outlined && styles[`${role}TextOutlined`])}>
       {children}
     </Text>
   </TouchableOpacity>

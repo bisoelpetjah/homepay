@@ -413,7 +413,7 @@ const DashboardInteriorDesignFirmHome: FC = () => {
             <TouchableOpacity
               activeOpacity={.5}
               onPress={handleToggleSubAccountOpen}
-              style={StyleSheet.compose(styles.subAccountsTitleToggleButton, isSubAccountOpen ? styles.subAccountsTitleToggleButtonOpen : {})}>
+              style={StyleSheet.compose(styles.subAccountsTitleToggleButton, isSubAccountOpen && styles.subAccountsTitleToggleButtonOpen)}>
               <Image
                 source={require('./arrow-forward-ios.png')}
                 style={styles.subAccountsTitleToggleButtonIcon} />
