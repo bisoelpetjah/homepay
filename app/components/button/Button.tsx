@@ -1,14 +1,12 @@
 import React, { FC } from 'react'
-import { StyleSheet, StyleProp, TextStyle, TouchableHighlight, Text, GestureResponderEvent } from 'react-native'
+import { StyleSheet, StyleProp, TextStyle, TouchableHighlight, TouchableHighlightProps, Text, GestureResponderEvent } from 'react-native'
 
 import { sysLightPrimary, sysLightOnPrimary, sysLightSecondaryContainer, sysLightOnSecondaryContainer, sysLightOutline } from '../../styles/colors'
 
-interface ButtonProps {
+interface ButtonBaseProps {
   children: string
   role?: 'primary' | 'secondary'
   outlined?: boolean
-  onPress?: (event: GestureResponderEvent) => void
-  style?: StyleProp<TextStyle>
 }
 
 const styles = StyleSheet.create({
@@ -46,12 +44,18 @@ const styles = StyleSheet.create({
   secondaryTextOutlined: {
     color: sysLightSecondaryContainer,
   },
+  disabled: {
+    opacity: .6,
+  },
 })
 
-const Button: FC<ButtonProps> = ({ children, role = 'primary', outlined = false, onPress, style }) => (
+type ButtonProps = ButtonBaseProps & Omit<TouchableHighlightProps, keyof ButtonBaseProps>
+
+const Button: FC<ButtonProps> = ({ children, role = 'primary', outlined = false, disabled = false, style, ...props }) => (
   <TouchableHighlight
-    onPress={onPress}
-    style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.button, styles[role]), outlined ? styles.outlined : {}), style)}>
+    disabled={disabled}
+    style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.button, styles[role]), outlined ? styles.outlined : {}), disabled ? styles.disabled : {}), style)}
+    {...props}>
     <Text style={StyleSheet.compose(StyleSheet.compose(styles.text, styles[`${role}Text`]), outlined ? styles[`${role}TextOutlined`] : {})}>
       {children}
     </Text>

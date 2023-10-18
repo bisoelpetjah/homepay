@@ -7,6 +7,8 @@ import Welcome from './pages/welcome/Welcome'
 import Start from './pages/start/Start'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
+import DashboardHomeowner from './pages/dashboard-homeowner/DashboardHomeowner'
+import DashboardInteriorDesignFirm from './pages/dashboard-interior-design-firm/DashboardInteriorDesignFirm'
 
 import { RootStackParamList } from './navigation'
 
@@ -36,6 +38,12 @@ const App: FC = () => (
       <Stack.Screen
         name="Signup"
         component={Signup} />
+      <Stack.Screen
+        name="DashboardHomeowner"
+        component={DashboardHomeowner} />
+      <Stack.Screen
+        name="DashboardInteriorDesignFirm"
+        component={DashboardInteriorDesignFirm} />
     </Stack.Navigator>
   </NavigationContainer>
 )

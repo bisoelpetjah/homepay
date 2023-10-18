@@ -1,7 +1,7 @@
 import React, { FC, useState, useCallback } from 'react'
-import { StyleSheet, StyleProp, TextStyle, View, TextInput, TextInputProps, TouchableHighlight, Image } from 'react-native'
+import { StyleSheet, StyleProp, TextStyle, View, Text, TextInput, TextInputProps, TouchableHighlight, Image } from 'react-native'
 
-import { sysLightOnSurfaceVariant } from '../../styles/colors'
+import { sysLightOnSurfaceVariant, sysLightError } from '../../styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -17,6 +17,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 8,
   },
+  inputError: {
+    borderColor: sysLightError,
+  },
   visibilityToggleButton: {
     position: 'absolute',
     right: 8,
@@ -26,18 +29,28 @@ const styles = StyleSheet.create({
     height: 24,
     objectFit: 'contain',
     width: 24,
-  }
+  },
+  errorMessage: {
+    color: sysLightError,
+    fontSize: 12,
+  },
 })
 
 interface InputBaseProps {
   password?: boolean
   showPasswordVisibilityToggle?: boolean
+  hasError?: boolean
+  errorMessage?: string
   inputStyle?: StyleProp<TextStyle>
 }
 
-type InputProps = InputBaseProps & Omit<TextInputProps, 'secureTextEntry'>
+type OmittedTextInputProps = {
+  secureTextEntry: string
+}
 
-const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle = false, style, inputStyle, ...props }) => {
+type InputProps = InputBaseProps & Omit<TextInputProps, keyof OmittedTextInputProps>
+
+const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle = false, hasError = false, errorMessage, style, inputStyle, ...props }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false)
 
   const handleTogglePasswordVisibility = useCallback(() => {
@@ -48,9 +61,14 @@ const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle 
     <View style={StyleSheet.compose(styles.container, style)}>
       <TextInput
         secureTextEntry={password && !isPasswordVisible}
-        style={StyleSheet.compose(styles.input, inputStyle)}
+        style={StyleSheet.compose(StyleSheet.compose(styles.input, (hasError || errorMessage) ? styles.inputError : {}), inputStyle)}
         {...props}>
       </TextInput>
+      {errorMessage && (
+        <Text style={styles.errorMessage}>
+          {errorMessage}
+        </Text>
+      )}
       {password && showPasswordVisibilityToggle && (
         <TouchableHighlight
           onPress={handleTogglePasswordVisibility}

@@ -1,5 +1,5 @@
 import React, { FC } from 'react'
-import { StyleSheet, ScrollView, View, Text, Image, Dimensions } from 'react-native'
+import { StyleSheet, ScrollView, View, Image, Dimensions } from 'react-native'
 
 import Input from '../../components/input/Input'
 import Button from '../../components/button/Button'
