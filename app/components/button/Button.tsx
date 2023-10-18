@@ -15,6 +15,7 @@ const styles = StyleSheet.create({
     borderRadius: 100,
     justifyContent: 'center',
     height: 40,
+    paddingHorizontal: 24,
   },
   primary: {
     backgroundColor: sysLightPrimary,

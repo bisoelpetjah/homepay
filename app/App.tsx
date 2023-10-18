@@ -8,6 +8,7 @@ import Start from './pages/start/Start'
 import Login from './pages/login/Login'
 import Signup from './pages/signup/Signup'
 import DashboardHomeowner from './pages/dashboard-homeowner/DashboardHomeowner'
+import HomeownerProjectDetail from './pages/homeowner-project-detail/HomeownerProjectDetail'
 import DashboardInteriorDesignFirm from './pages/dashboard-interior-design-firm/DashboardInteriorDesignFirm'
 
 import { RootStackParamList } from './navigation'
@@ -20,7 +21,7 @@ const App: FC = () => (
   <NavigationContainer>
     <Stack.Navigator
       initialRouteName="Splash"
-      screenOptions={{ header: () => null }}>
+      screenOptions={{ header: () => null, contentStyle: { backgroundColor: '#f6f6f6' } }}>
       <Stack.Screen
         name="Splash"
         component={Splash}
@@ -41,6 +42,9 @@ const App: FC = () => (
       <Stack.Screen
         name="DashboardHomeowner"
         component={DashboardHomeowner} />
+      <Stack.Screen
+        name="HomeownerProjectDetail"
+        component={HomeownerProjectDetail} />
       <Stack.Screen
         name="DashboardInteriorDesignFirm"
         component={DashboardInteriorDesignFirm} />

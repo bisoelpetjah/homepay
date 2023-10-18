@@ -1,6 +1,7 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
 import { UserRole } from './models/user'
+import Project from './models/project'
 
 export type RootStackParamList = {
   Splash: undefined
@@ -9,6 +10,7 @@ export type RootStackParamList = {
   Login: { role: UserRole }
   Signup: { role: UserRole }
   DashboardHomeowner: undefined
+  HomeownerProjectDetail: { project: Project }
   DashboardInteriorDesignFirm: undefined
 }
 

@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
 const Splash: FC<NavigationProps<'Splash'>> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(async () => {
-      await clearCurrentUser()
+      // await clearCurrentUser()
       const user = await getCurrentUser()
 
       if (!user) {
