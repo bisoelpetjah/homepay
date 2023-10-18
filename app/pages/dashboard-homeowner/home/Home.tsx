@@ -291,25 +291,23 @@ const projects: Project[] = [
         description: 'Lorem ipsum dolor sit amet consectetur. Risus mi placerat cras dolor augue dolor fringilla. Natoque orci euismod aliquam enim ut. Facilisi sed id turpis tincidunt. Nibh leo fusce fusce tortor nisl suspendisse nec.',
         progress: '20%',
         paymentAmount: '$40,000',
-        attachmentImage: require('./tranche-attachment.jpeg'),
       },
       {
         name: 'Tranche 2',
         description: 'Lorem ipsum dolor sit amet consectetur. Risus mi placerat cras dolor augue dolor fringilla. Natoque orci euismod aliquam enim ut. Facilisi sed id turpis tincidunt. Nibh leo fusce fusce tortor nisl suspendisse nec.',
         progress: '20%',
         paymentAmount: '$40,000',
-        attachmentImage: require('./tranche-attachment.jpeg'),
       },
       {
         name: 'Tranche 3',
         description: 'Lorem ipsum dolor sit amet consectetur. Risus mi placerat cras dolor augue dolor fringilla. Natoque orci euismod aliquam enim ut. Facilisi sed id turpis tincidunt. Nibh leo fusce fusce tortor nisl suspendisse nec.',
         progress: '20%',
         paymentAmount: '$40,000',
-        attachmentImage: require('./tranche-attachment.jpeg'),
       },
     ],
     currentTrancheName: 'Tranche 1',
     escrowWalletAmount: '$20,000',
+    attachmentImage: require('./tranche-attachment.jpeg'),
   },
 ]
 

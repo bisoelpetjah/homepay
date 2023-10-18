@@ -5,7 +5,6 @@ export interface ProjectTranche {
   description: string
   progress: string
   paymentAmount: string
-  attachmentImage?: ImageSourcePropType
 }
 
 interface Project {
@@ -13,6 +12,7 @@ interface Project {
   tranches: ProjectTranche[]
   currentTrancheName: string
   escrowWalletAmount: string
+  attachmentImage?: ImageSourcePropType
 }
 
 export default Project
