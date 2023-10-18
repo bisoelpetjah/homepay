@@ -6,7 +6,7 @@ export type RootStackParamList = {
   Splash: undefined
   Welcome: undefined
   Start: { role: UserRole }
-  Login: undefined
+  Login: { role: UserRole }
   Signup: { role: UserRole }
   DashboardHomeowner: undefined
   DashboardInteriorDesignFirm: undefined

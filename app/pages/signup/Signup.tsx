@@ -1,6 +1,5 @@
 import React, { FC, useState, useCallback } from 'react'
 import { StyleSheet, ScrollView, View, Text, Dimensions } from 'react-native'
-import { CommonActions } from '@react-navigation/native'
 import { useForm, Controller } from 'react-hook-form'
 import isEmail from 'validator/lib/isEmail'
 
@@ -103,25 +102,26 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
         case 'confirmPassword':
           switch(error.type) {
             case 'required':
-              return { ...prev, [dataKey]: 'Please re-enter password'  }
+              return { ...prev, [dataKey]: 'Please re-enter password' }
             case 'confirm':
-              return { ...prev, [dataKey]: 'Password does not match'  }
+              return { ...prev, [dataKey]: 'Password does not match' }
           }
         case 'email':
           switch(error.type) {
             case 'required':
-              return { ...prev, [dataKey]: 'Please enter email'  }
+              return { ...prev, [dataKey]: 'Please enter email' }
             case 'email': {
-              return { ...prev, [dataKey]: 'Invalid email format'  }
+              return { ...prev, [dataKey]: 'Invalid email format' }
             }
           }
         default:
-          return { ...prev, [dataKey]: `Please enter ${dataKey}`  }
+          return { ...prev, [dataKey]: `Please enter ${dataKey}` }
       }
     }
     return prev
   }, {})
 
+  const isEmpty = !getValues().name?.length || !getValues().email?.length || !getValues().password?.length || !getValues().confirmPassword?.length
   const hasError = !!Object.keys(errorMessages).length
 
   return (
@@ -136,7 +136,7 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
         <Controller
           name="name"
           control={control}
-          rules={{ required: true, }}
+          rules={{ required: true }}
           render={({ field: { onChange, ...field } }) => (
           <Input
             placeholder="Name as per NRIC*"
@@ -192,7 +192,7 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
           )} />
         <View style={styles.spacer} />
         <Button
-          disabled={hasError}
+          disabled={isEmpty || hasError}
           onPress={handleSubmit(handleFormSubmit)}
           style={styles.button}>
           Submit

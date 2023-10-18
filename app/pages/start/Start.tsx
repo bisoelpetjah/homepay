@@ -127,7 +127,7 @@ const Start: FC<NavigationProps<'Start'>> = ({ route, navigation }) => {
   const [activeCarouselItemIndex, setActiveCarouselItemIndex] = useState(0)
 
   const handleLogin = useCallback(() => {
-    navigation.push('Login')
+    navigation.push('Login', { role: route.params.role })
   }, [])
 
   const handleSignup = useCallback(() => {
