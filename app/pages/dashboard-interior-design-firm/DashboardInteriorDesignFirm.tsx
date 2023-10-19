@@ -4,6 +4,7 @@ import type { NavigationState } from '@react-navigation/native'
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs'
 
 import DashboardInteriorDesignFirmHome from './home/Home'
+import Settings from '../settings/Settings'
 
 import { DashboardInteriorDesignFirmParamList } from './navigation'
 
@@ -97,7 +98,7 @@ const NavigationBar: FC<BottomTabBarProps> = ({ state, navigation }) => {
             displayName = 'All Projects'
             displayIcon = require('./folder-open.png')
             break
-          case 'DashboardInteriorDesignFirmSettings':
+          case 'Settings':
             displayName = 'Settings'
             displayIcon = require('./settings.png')
             break
@@ -145,8 +146,8 @@ const DashboardInteriorDesignFirm: FC = () => (
       name="DashboardInteriorDesignAllProjects"
       component={View} />
     <Tab.Screen
-      name="DashboardInteriorDesignFirmSettings"
-      component={View} />
+      name="Settings"
+      component={Settings} />
   </Tab.Navigator>
 )
 

@@ -4,6 +4,7 @@ import type { NavigationState } from '@react-navigation/native'
 import { createBottomTabNavigator, BottomTabBarProps } from '@react-navigation/bottom-tabs'
 
 import DashboardHomeownerHome from './home/Home'
+import Settings from '../settings/Settings'
 
 import { DashboardHomeownerParamList } from './navigation'
 
@@ -93,7 +94,7 @@ const NavigationBar: FC<BottomTabBarProps> = ({ state, navigation }) => {
             displayName = 'Projects'
             displayIcon = require('./folder-open.png')
             break
-          case 'DashboardHomeownerSettings':
+          case 'Settings':
             displayName = 'Settings'
             displayIcon = require('./settings.png')
             break
@@ -138,8 +139,8 @@ const DashboardHomeowner: FC = () => (
       name="DashboardHomeownerProjects"
       component={View} />
     <Tab.Screen
-      name="DashboardHomeownerSettings"
-      component={View} />
+      name="Settings"
+      component={Settings} />
   </Tab.Navigator>
 )
 
