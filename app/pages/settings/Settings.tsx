@@ -188,7 +188,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
         </TouchableOpacity>
         <TouchableOpacity
           activeOpacity={.5}
-          onPress={() => {}}
+          onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsTransactionHistory') }}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
             <Text style={styles.menuButtonText}>
