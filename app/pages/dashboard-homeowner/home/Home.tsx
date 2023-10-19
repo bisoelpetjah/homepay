@@ -437,7 +437,7 @@ const DashboardHomeownerHome: FC<NavigationProps<'DashboardHomeownerHome'>> = ({
           <View style={styles.transactionListActionContainer}>
             <TouchableOpacity
               activeOpacity={.5}
-              onPress={() => {}}>
+              onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsTransactionHistory') }}>
               <Text style={styles.transactionListActionText}>
                 View All
               </Text>
