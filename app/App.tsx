@@ -14,6 +14,7 @@ import SettingsInformation from './pages/settings/information/Information'
 import SettingsNotifications from './pages/settings/notifications/Notifications'
 import SettingsTransactionHistory from './pages/settings/transaction-history/TransactionHistory'
 import SettingsFAQ from './pages/settings/faq/FAQ'
+import SettingsTnC from './pages/settings/tnc/TnC'
 
 import { RootStackParamList } from './navigation'
 
@@ -64,6 +65,9 @@ const App: FC = () => (
       <Stack.Screen
         name="SettingsFAQ"
         component={SettingsFAQ} />
+      <Stack.Screen
+        name="SettingsTnC"
+        component={SettingsTnC} />
     </Stack.Navigator>
   </NavigationContainer>
 )

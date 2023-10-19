@@ -10,6 +10,7 @@ export type SettingsMenuParamList = {
   SettingsNotifications: undefined
   SettingsTransactionHistory: undefined
   SettingsFAQ: undefined
+  SettingsTnC: undefined
 }
 
 export type NavigationProps<R extends keyof SettingsParamList = never> = BottomTabScreenProps<SettingsParamList, R>
