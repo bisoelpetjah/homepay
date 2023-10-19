@@ -4,16 +4,17 @@
   "private": true,
   "scripts": {
     "adb-setup": "adb reverse tcp:8081 tcp:8081",
-    "gradle-clean": "cd android && ./gradlew clean",
+    "clean-gradle": "cd android && ./gradlew clean",
     "android": "react-native run-android",
-    "build-android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && cd android && ./gradlew assembleRelease",
+    "build-gradle": "cd android && ./gradlew assembleRelease",
+    "build-android": "yarn clean && yarn build-gradle",
     "pod-install": "pod-install ios",
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "watch-clean": "watchman watch-del .",
-    "clean": "yarn watch-clean && yarn gradle-clean"
+    "clean-watch": "watchman watch-del .",
+    "clean": "yarn clean-watch && yarn clean-gradle"
   },
   "dependencies": {
     "@react-native-async-storage/async-storage": "^1.19.3",
