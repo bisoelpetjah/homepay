@@ -13,6 +13,7 @@ import DashboardInteriorDesignFirm from './pages/dashboard-interior-design-firm/
 import SettingsInformation from './pages/settings/information/Information'
 import SettingsNotifications from './pages/settings/notifications/Notifications'
 import SettingsTransactionHistory from './pages/settings/transaction-history/TransactionHistory'
+import SettingsFAQ from './pages/settings/faq/FAQ'
 
 import { RootStackParamList } from './navigation'
 
@@ -60,6 +61,9 @@ const App: FC = () => (
       <Stack.Screen
         name="SettingsTransactionHistory"
         component={SettingsTransactionHistory} />
+      <Stack.Screen
+        name="SettingsFAQ"
+        component={SettingsFAQ} />
     </Stack.Navigator>
   </NavigationContainer>
 )

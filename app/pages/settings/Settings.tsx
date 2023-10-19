@@ -204,7 +204,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
         </Text>
         <TouchableOpacity
           activeOpacity={.5}
-          onPress={() => {}}
+          onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsFAQ') }}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
             <Text style={styles.menuButtonText}>
