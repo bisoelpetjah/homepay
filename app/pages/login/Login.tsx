@@ -103,7 +103,7 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
             break
         }
       })
-    }, 1000)
+    }, 500)
   }, [])
 
   const errorMessages: Partial<LoginFormData> = Object.keys(getValues()).reduce((prev, key) => {

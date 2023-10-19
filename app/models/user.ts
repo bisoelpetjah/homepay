@@ -8,6 +8,12 @@ export interface UserRenovationInfo {
   keyCollectionDate: string
 }
 
+export interface UserSettings {
+  allowPushNotifications: boolean
+  allowEmailNotifications: boolean
+  allowPhoneNotifications: boolean
+}
+
 interface User {
   email: string
   name: string
@@ -16,6 +22,7 @@ interface User {
   role: UserRole
   renovationInfo: UserRenovationInfo
   subAccounts?: SubAccount[]
+  settings: UserSettings
 }
 
 export default User

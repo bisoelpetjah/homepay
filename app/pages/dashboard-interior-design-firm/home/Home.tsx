@@ -7,7 +7,7 @@ import Switch from '../../../components/switch/Switch'
 
 import User from '../../../models/user'
 
-import { getCurrentUser, setCurrentUser as setUser } from '../../../services/user'
+import { getCurrentUser, setCurrentUser as setUser, setInteriorDesignFirmUser } from '../../../services/user'
 
 import { sysLightPrimary, sysLightOnPrimary, sysLightOnPrimaryContainer, sysLightSecondary99, sysLightOutlineVariant, sysLightSurfaceVariant } from '../../../styles/colors'
 
@@ -259,7 +259,7 @@ const DashboardInteriorDesignFirmHome: FC = () => {
   }, [])
 
   useEffect(() => {
-    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+    if (isFocused) setTimeout(handleGetCurrentUser, 500)
   }, [isFocused])
 
   const handleToggleSubAccountOpen = useCallback(() => {
@@ -269,12 +269,12 @@ const DashboardInteriorDesignFirmHome: FC = () => {
   const handleSubAccountActiveChange = useCallback((i: number, isActive: boolean) => {
     if (!currentUser?.subAccounts) return
 
-    const data = {...currentUser}
+    const data = { ...currentUser }
     data.subAccounts![i].isActive = isActive
 
     setCurrentUser(data)
-
     setUser(data)
+    setInteriorDesignFirmUser(data)
   }, [currentUser])
 
   if (!currentUser) return <Loading />

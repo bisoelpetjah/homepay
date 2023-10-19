@@ -169,6 +169,7 @@ const HomeownerProjectDetail: FC<NavigationProps<'HomeownerProjectDetail'>> = ({
     <ScrollView>
       <View style={styles.topBarContainer}>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => navigation.goBack()}
           style={styles.topBarActionButton}>
           <Image
@@ -176,6 +177,7 @@ const HomeownerProjectDetail: FC<NavigationProps<'HomeownerProjectDetail'>> = ({
             style={styles.topBarActionButtonIcon} />
         </TouchableOpacity>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => {}}
           style={styles.topBarActionButton}>
           <Image

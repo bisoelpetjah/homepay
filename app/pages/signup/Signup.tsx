@@ -70,6 +70,11 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
         houseType: 'House Type',
         keyCollectionDate: 'Key Collection Date',
       },
+      settings: {
+        allowPushNotifications: true,
+        allowEmailNotifications: true,
+        allowPhoneNotifications: true,
+      },
     }
 
     switch (user.role) {
@@ -101,7 +106,7 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
             break
         }
       })
-    }, 1000)
+    }, 500)
   }, [])
 
   const errorMessages: Partial<SignupFormData> = Object.keys(getValues()).reduce((prev, key) => {

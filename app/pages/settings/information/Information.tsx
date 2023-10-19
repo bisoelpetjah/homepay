@@ -14,11 +14,11 @@ import { getCurrentUser, setCurrentUser as setUser, setHomeownerUser, setInterio
 
 import { NavigationProps } from '../../../navigation'
 
-import { surfacesLightSurface3, surfacesLightSurface3Alpha, sysLightPrimary, sysLightOnPrimaryContainer, sysLightOutlineVariant } from '../../../styles/colors'
+import { sysLightPrimary, sysLightOnPrimaryContainer } from '../../../styles/colors'
 
 const styles = StyleSheet.create({
   container: {
-    minHeight: Dimensions.get('window').height - 32 - 8 - 32 - 80,
+    minHeight: Dimensions.get('window').height - 32 - 8 - 32,
     paddingHorizontal: 16,
   },
   topBarContainer: {
@@ -98,7 +98,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
     setTimeout(async () => {
       const data = await getCurrentUser()
       setCurrentUser(data)
-    }, 1000)
+    }, 500)
   }, [])
 
   const { control, getValues, setValue, clearErrors, formState: { errors }, handleSubmit } = useForm<InformationFormData>()
@@ -187,7 +187,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
         if (isEditingRenovationInfo) handleToggleEditingRenovationInfo()
         if (isEditingPassword) handleToggleEditingPassword()
       })
-    }, 1000)
+    }, 500)
   }, [currentUser, isEditingPersonalInfo, isEditingRenovationInfo, isEditingPassword])
 
   const errorMessages: Partial<InformationFormData> = Object.keys(getValues()).reduce((prev, key) => {
@@ -225,6 +225,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
     <ScrollView>
       <View style={styles.topBarContainer}>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => navigation.goBack()}
           style={styles.topBarBackButton}>
           <Image
@@ -241,6 +242,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
             Personal Information
           </Text>
           <TouchableOpacity
+            activeOpacity={.5}
             onPress={handleToggleEditingPersonalInfo}
             style={styles.sectionTitleAction}>
             <Text style={styles.sectionTitleActionText}>
@@ -297,6 +299,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
             Renovation Information
           </Text>
           <TouchableOpacity
+            activeOpacity={.5}
             onPress={handleToggleEditingRenovationInfo}
             style={styles.sectionTitleAction}>
             <Text style={styles.sectionTitleActionText}>
@@ -351,6 +354,7 @@ const SettingsInformation: FC<NavigationProps<'SettingsInformation'>> = ({ navig
             Password
           </Text>
           <TouchableOpacity
+            activeOpacity={.5}
             onPress={handleToggleEditingPassword}
             style={styles.sectionTitleAction}>
             <Text style={styles.sectionTitleActionText}>

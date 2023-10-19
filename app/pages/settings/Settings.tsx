@@ -116,7 +116,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
   }, [])
 
   useEffect(() => {
-    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+    if (isFocused) setTimeout(handleGetCurrentUser, 500)
   }, [isFocused])
 
   const handleLogout = useCallback(async () => {
@@ -130,6 +130,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
     <ScrollView>
       <View style={styles.topBarContainer}>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => navigation.goBack()}
           style={styles.topBarBackButton}>
           <Image
@@ -160,6 +161,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           Account Settings
         </Text>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsInformation') }}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
@@ -172,7 +174,8 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
-          onPress={() => {}}
+          activeOpacity={.5}
+          onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsNotifications') }}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
             <Text style={styles.menuButtonText}>
@@ -184,6 +187,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => {}}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
@@ -199,6 +203,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           Help
         </Text>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => {}}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
@@ -211,6 +216,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => {}}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
@@ -223,6 +229,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <TouchableOpacity
+          activeOpacity={.5}
           onPress={() => {}}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>

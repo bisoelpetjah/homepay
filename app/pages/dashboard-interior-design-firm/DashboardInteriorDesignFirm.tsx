@@ -108,6 +108,7 @@ const NavigationBar: FC<BottomTabBarProps> = ({ state, navigation }) => {
         return (
           <TouchableOpacity
             key={i}
+            activeOpacity={.5}
             accessibilityRole="button"
             accessibilityState={isActive ? { selected: true } : {}}
             onPress={onPress}

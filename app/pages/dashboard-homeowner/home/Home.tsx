@@ -323,7 +323,7 @@ const DashboardHomeownerHome: FC<NavigationProps<'DashboardHomeownerHome'>> = ({
   }, [])
 
   useEffect(() => {
-    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+    if (isFocused) setTimeout(handleGetCurrentUser, 500)
   }, [isFocused])
 
   if (!currentUser) return <Loading />

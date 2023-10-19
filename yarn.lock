@@ -5665,6 +5665,11 @@ react-is@^17.0.1:
   resolved "https://registry.yarnpkg.com/react-is/-/react-is-17.0.2.tgz#e691d4a8e9c789365655539ab372762b0efb54f0"
   integrity sha512-w2GsyukL62IJnlaff/nRegPQR94C/XXamvMWmSHRJ4y7Ts/4ocGRmTHvOs8PSE6pB3dWOrD/nueuU5sduBsQ4w==
 
+react-native-open-notification@^0.1.4:
+  version "0.1.4"
+  resolved "https://registry.yarnpkg.com/react-native-open-notification/-/react-native-open-notification-0.1.4.tgz#20b7c03a1543ce36f3f99ff9924c67eef2688aa9"
+  integrity sha512-TPeFRsao6nDFW5nvBseD6nheRCN1U3poaY90iDzBY1MEEVepClqfEC9Iw0cqj7LYnpDSF8V25fb/SpjEg3HdQQ==
+
 react-native-safe-area-context@^4.7.2:
   version "4.7.2"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-4.7.2.tgz#1673aa99b6a9235e7faaf5a248e69795d6e54e07"
