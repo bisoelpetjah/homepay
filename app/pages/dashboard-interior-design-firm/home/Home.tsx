@@ -1,5 +1,6 @@
 import React, { FC, Fragment, useState, useEffect, useCallback } from 'react'
 import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, Dimensions } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
 
 import Loading from '../../../components/loading/Loading'
 import Switch from '../../../components/switch/Switch'
@@ -250,12 +251,16 @@ const DashboardInteriorDesignFirmHome: FC = () => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
   const [isSubAccountOpen, setSubAccountOpen] = useState(true)
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const data = await getCurrentUser()
-      setCurrentUser(data)
-    }, 1000)
+  const isFocused = useIsFocused()
+
+  const handleGetCurrentUser = useCallback(async () => {
+    const data = await getCurrentUser()
+    setCurrentUser(data)
   }, [])
+
+  useEffect(() => {
+    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+  }, [isFocused])
 
   const handleToggleSubAccountOpen = useCallback(() => {
     setSubAccountOpen(value => !value)

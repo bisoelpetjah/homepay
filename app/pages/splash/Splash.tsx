@@ -3,7 +3,7 @@ import { StyleSheet, View, Image } from 'react-native'
 
 import { NavigationProps } from '../../navigation'
 
-import { getCurrentUser, clearCurrentUser } from '../../services/user'
+import { getCurrentUser } from '../../services/user'
 
 import { surfacesLightSurface3Alpha } from '../../styles/colors'
 
@@ -24,7 +24,6 @@ const styles = StyleSheet.create({
 const Splash: FC<NavigationProps<'Splash'>> = ({ navigation }) => {
   useEffect(() => {
     setTimeout(async () => {
-      // await clearCurrentUser()
       const user = await getCurrentUser()
 
       if (!user) {

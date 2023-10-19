@@ -55,6 +55,7 @@ const styles = StyleSheet.create({
 
 const NavigationBar: FC<BottomTabBarProps> = ({ state, navigation }) => {
   const routes = state.routes as NavigationState<DashboardHomeownerParamList>['routes']
+
   return (
     <View style={styles.container}>
       {routes.map((route, i) => {

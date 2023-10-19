@@ -62,8 +62,14 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
     const user: User = {
       email: data.email,
       name: data.name,
+      phoneNumber: '91234567',
       password: data.password,
       role: route.params.role,
+      renovationInfo: {
+        address: 'Address',
+        houseType: 'House Type',
+        keyCollectionDate: 'Key Collection Date',
+      },
     }
 
     switch (user.role) {
@@ -143,13 +149,13 @@ const Signup: FC<NavigationProps<'Signup'>> = ({ route, navigation }) => {
           control={control}
           rules={{ required: true }}
           render={({ field: { onChange, ...field } }) => (
-          <Input
-            placeholder="Name as per NRIC*"
-            errorMessage={errorMessages.name}
-            onChangeText={onChange}
-            onSubmitEditing={handleSubmit(handleFormSubmit)}
-            style={styles.input}
-            {...field} />
+            <Input
+              placeholder="Name as per NRIC*"
+              errorMessage={errorMessages.name}
+              onChangeText={onChange}
+              onSubmitEditing={handleSubmit(handleFormSubmit)}
+              style={styles.input}
+              {...field} />
           )} />
         <Controller
           name="email"

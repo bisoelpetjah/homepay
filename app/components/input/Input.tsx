@@ -1,7 +1,7 @@
 import React, { FC, useState, useCallback } from 'react'
 import { StyleSheet, StyleProp, TextStyle, View, Text, TextInput, TextInputProps, TouchableOpacity, Image } from 'react-native'
 
-import { sysLightOnSurfaceVariant, sysLightError } from '../../styles/colors'
+import { sysLightOnSurfaceVariant, sysLightError, sysLightSurfaceContainerHighest } from '../../styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     lineHeight: 24,
     paddingHorizontal: 16,
     paddingVertical: 8,
+  },
+  inputDisabled: {
+    backgroundColor: sysLightSurfaceContainerHighest,
+    opacity: .4,
   },
   inputError: {
     borderColor: sysLightError,
@@ -39,6 +43,7 @@ const styles = StyleSheet.create({
 interface InputBaseProps {
   password?: boolean
   showPasswordVisibilityToggle?: boolean
+  disabled?: boolean
   hasError?: boolean
   errorMessage?: string
   inputStyle?: StyleProp<TextStyle>
@@ -46,11 +51,12 @@ interface InputBaseProps {
 
 type OmittedTextInputProps = {
   secureTextEntry: string
+  editable: boolean
 }
 
 type InputProps = InputBaseProps & Omit<TextInputProps, keyof OmittedTextInputProps>
 
-const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle = false, hasError = false, errorMessage, style, inputStyle, ...props }) => {
+const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle = false, disabled = false, hasError = false, errorMessage, style, inputStyle, ...props }) => {
   const [isPasswordVisible, setPasswordVisible] = useState(false)
 
   const handleTogglePasswordVisibility = useCallback(() => {
@@ -60,8 +66,9 @@ const Input: FC<InputProps> = ({ password = false, showPasswordVisibilityToggle 
   return (
     <View style={StyleSheet.compose(styles.container, style)}>
       <TextInput
+        editable={!disabled}
         secureTextEntry={password && !isPasswordVisible}
-        style={StyleSheet.compose(StyleSheet.compose(styles.input, (hasError || !!errorMessage) && styles.inputError), inputStyle)}
+        style={StyleSheet.compose(StyleSheet.compose(StyleSheet.compose(styles.input, disabled && styles.inputDisabled), (hasError || !!errorMessage) && styles.inputError), inputStyle)}
         {...props}>
       </TextInput>
       {errorMessage && (

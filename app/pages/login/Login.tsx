@@ -137,6 +137,7 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
             <Input
               keyboardType="email-address"
               placeholder="Email/Phone Number"
+              errorMessage={errorMessages.email}
               onChangeText={onChange}
               onSubmitEditing={handleSubmit(handleFormSubmit)}
               style={styles.input}
@@ -151,6 +152,7 @@ const Login: FC<NavigationProps<'Login'>> = ({ route, navigation }) => {
               password
               showPasswordVisibilityToggle
               placeholder="Password"
+              errorMessage={errorMessages.password}
               onChangeText={onChange}
               onSubmitEditing={handleSubmit(handleFormSubmit)}
               style={styles.input}

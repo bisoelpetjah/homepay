@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC, useState, useEffect, useCallback } from 'react'
 import { StyleSheet, ScrollView, View, Text, Image, TouchableOpacity, Dimensions } from 'react-native'
+import { useIsFocused } from '@react-navigation/native'
 
 import Loading from '../../../components/loading/Loading'
 import Button from '../../../components/button/Button'
@@ -314,12 +315,16 @@ const projects: Project[] = [
 const DashboardHomeownerHome: FC<NavigationProps<'DashboardHomeownerHome'>> = ({ navigation }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const data = await getCurrentUser()
-      setCurrentUser(data)
-    }, 1000)
+  const isFocused = useIsFocused()
+
+  const handleGetCurrentUser = useCallback(async () => {
+    const data = await getCurrentUser()
+    setCurrentUser(data)
   }, [])
+
+  useEffect(() => {
+    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+  }, [isFocused])
 
   if (!currentUser) return <Loading />
 

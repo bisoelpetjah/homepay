@@ -1,6 +1,6 @@
 import React, { FC, useState, useEffect, useCallback } from 'react'
 import { StyleSheet, ScrollView, View, Image, TouchableOpacity, Dimensions, Text } from 'react-native'
-import { NavigationProp } from '@react-navigation/native'
+import { useIsFocused, NavigationProp } from '@react-navigation/native'
 
 import Loading from '../../components/loading/Loading'
 import Button from '../../components/button/Button'
@@ -12,7 +12,7 @@ import { getCurrentUser, clearCurrentUser } from '../../services/user'
 import { NavigationProps } from './navigation'
 import { RootStackParamList } from '../../navigation'
 
-import { surfacesLightSurface3, surfacesLightSurface3Alpha, sysLightOnPrimaryContainer, sysLightSecondary, sysLightSecondary99, sysLightOutlineVariant } from '../../styles/colors'
+import { surfacesLightSurface3, surfacesLightSurface3Alpha, sysLightOnPrimaryContainer, sysLightOutlineVariant } from '../../styles/colors'
 
 const styles = StyleSheet.create({
   container: {
@@ -108,12 +108,16 @@ const styles = StyleSheet.create({
 const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null)
 
-  useEffect(() => {
-    setTimeout(async () => {
-      const data = await getCurrentUser()
-      setCurrentUser(data)
-    }, 1000)
+  const isFocused = useIsFocused()
+
+  const handleGetCurrentUser = useCallback(async () => {
+    const data = await getCurrentUser()
+    setCurrentUser(data)
   }, [])
+
+  useEffect(() => {
+    if (isFocused) setTimeout(handleGetCurrentUser, 1000)
+  }, [isFocused])
 
   const handleLogout = useCallback(async () => {
     await clearCurrentUser()
@@ -139,7 +143,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.userInfoContainer}>
           <Text style={styles.userInfoTitle}>
-            Client Name
+            {currentUser.name}
           </Text>
           <Text style={styles.userInfoDetail}>
             Client ID: XXXXXXXX
@@ -156,7 +160,7 @@ const Settings: FC<NavigationProps<'Settings'>> = ({ navigation }) => {
           Account Settings
         </Text>
         <TouchableOpacity
-          onPress={() => {}}
+          onPress={() => { navigation.getParent<NavigationProp<RootStackParamList>>().navigate('SettingsInformation') }}
           style={styles.menuButton}>
           <View style={styles.menuButtonContainer}>
             <Text style={styles.menuButtonText}>
